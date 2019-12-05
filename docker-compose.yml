@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+
+  mysql:
+    image: mysql:5.7
+    ports:
+    - "3306:3306"
+    volumes:
+    - ${MYSQL_VOLUME:-mysql-volume}:/var/lib/mysql:Z
+    environment:
+    - MYSQL_USER=${MYSQL_USER}
+    - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+    - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+    - MYSQL_DATABASE=${MYSQL_DB}
+
+  limesurvey:
+    image: acspri/limesurvey
+    depends_on:
+    - mysql
+    links:
+    - mysql
+    ports:
+    - "80:80"
+    volumes:
+    - ${LIMESURVEY_VOLUME:-limesurvey-volume}:/app/upload
+    environment:
+    - LIMESURVEY_DB_USER=${MYSQL_USER}
+    - LIMESURVEY_DB_PASSWORD=${MYSQL_PASSWORD}
+    - LIMESURVEY_DB_HOST=mysql
+    - LIMESURVEY_DB_NAME=${MYSQL_DB}
+    - LIMESURVEY_ADMIN_USER=${LIMESURVEY_ADMIN_USER}
+    - LIMESURVEY_ADMIN_PASSWORD=${LIMESURVEY_ADMIN_PASSWORD}
+    - LIMESURVEY_ADMIN_NAME=${LIMESURVEY_ADMIN_NAME}
+    - LIMESURVEY_ADMIN_EMAIL=${LIMESURVEY_ADMIN_EMAIL}
+
+volumes:
+  mysql-volume:
+  limesurvey-volume:
