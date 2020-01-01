@@ -21,9 +21,10 @@ services:
     links:
     - mysql
     ports:
-    - "80:80"
+    - "8080:80"
     volumes:
-    - ${LIMESURVEY_VOLUME:-limesurvey-volume}:/app/upload
+    - ${LIMESURVEY_PL_VOLUME:-limesurvey-plugins-volume}:/var/www/html/plugins
+    - ${LIMESURVEY_UP_VOLUME:-limesurvey-upload-volume}:/var/www/html/upload
     environment:
     - LIMESURVEY_DB_USER=${MYSQL_USER}
     - LIMESURVEY_DB_PASSWORD=${MYSQL_PASSWORD}
@@ -36,4 +37,5 @@ services:
 
 volumes:
   mysql-volume:
-  limesurvey-volume:
+  limesurvey-plugins-volume:
+  limesurvey-upoad-volume:

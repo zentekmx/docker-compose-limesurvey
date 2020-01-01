@@ -1,0 +1,15 @@
+<config>
+    <metadata>
+        <name>WordCloud</name>
+        <type>plugin</type>
+        <creationDate>2019-06-12</creationDate>
+        <lastUpdate>2019-06-12</lastUpdate>
+        <author>Markus Flür</author>
+        <authorUrl>https://github.com/lacrioque</authorUrl>
+        <supportUrl>https://github.com/lacrioque/WordCloud</supportUrl>
+        <version>1.1.0</version>
+        <lastSecurityUpdate>1.0.0</lastSecurityUpdate>
+        <license>GNU General Public License version 2 or later</license>
+        <description><![CDATA[Visualize your text based questions as a word cloud in the survey administration.]]></description>
+    </metadata>
+</config>
