@@ -38,4 +38,4 @@ services:
 volumes:
   mysql-volume:
   limesurvey-plugins-volume:
-  limesurvey-upoad-volume:
+  limesurvey-upload-volume:
