@@ -36,6 +36,14 @@ services:
     - LIMESURVEY_ADMIN_NAME=${LIMESURVEY_ADMIN_NAME}
     - LIMESURVEY_ADMIN_EMAIL=${LIMESURVEY_ADMIN_EMAIL}
 
+  mailtrap:
+    image: eaudeweb/mailtrap
+    ports:
+    - "4000:80"
+    environment:
+    - MT_USER=${MT_USER}
+    - MT_PASSWD=${MT_PASSWD}
+
 volumes:
   mysql-volume:
   limesurvey-plugins-volume:
