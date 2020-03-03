@@ -13,6 +13,10 @@ services:
     - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
     - MYSQL_DATABASE=${MYSQL_DB}
+    command:
+    - "--max_allowed_packet=128M"
+    - "--character-set-server=utf8"
+    - "--collation-server=utf8_unicode_ci"
 
   limesurvey:
     image: acspri/limesurvey:lts
@@ -37,12 +41,10 @@ services:
     - LIMESURVEY_ADMIN_EMAIL=${LIMESURVEY_ADMIN_EMAIL}
 
   mailtrap:
-    image: eaudeweb/mailtrap
+    image: zentekmx/mailtrap
     ports:
-    - "4000:80"
-    environment:
-    - MT_USER=${MT_USER}
-    - MT_PASSWD=${MT_PASSWD}
+    - "1080:1080"
+    - "1025:1025"
 
 volumes:
   mysql-volume:
